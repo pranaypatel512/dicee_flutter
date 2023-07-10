@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,13 @@ class DinceePage extends StatefulWidget {
 
 class _DinceePageState extends State<DinceePage> {
   int leftDiceeNo = 2;
+  int rightDiceeNo = 3;
+
+  void changeDiceeFace() {
+    leftDiceeNo = Random().nextInt(6) + 1;
+    rightDiceeNo = Random().nextInt(6) + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +70,7 @@ class _DinceePageState extends State<DinceePage> {
                 child: TextButton(
                   onPressed: () {
                     setState(() {
-                      leftDiceeNo = 5;
+                      changeDiceeFace();
                     });
                   },
                   child: Image.asset('images/dice$leftDiceeNo.png'),
@@ -70,11 +79,11 @@ class _DinceePageState extends State<DinceePage> {
               Expanded(
                 child: TextButton(
                   onPressed: () {
-                    if (kDebugMode) {
-                      print("Second dicee clicked");
-                    }
+                    setState(() {
+                      changeDiceeFace();
+                    });
                   },
-                  child: Image.asset('images/dice2.png'),
+                  child: Image.asset('images/dice$rightDiceeNo.png'),
                 ),
               ),
             ],
