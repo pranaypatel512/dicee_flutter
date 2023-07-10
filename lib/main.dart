@@ -32,14 +32,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const DinceePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class DinceePage extends StatefulWidget {
+  const DinceePage({super.key});
 
+  @override
+  State<DinceePage> createState() => _DinceePageState();
+}
+
+class _DinceePageState extends State<DinceePage> {
+  int leftDiceeNo = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +60,11 @@ class MyHomePage extends StatelessWidget {
               Expanded(
                 child: TextButton(
                   onPressed: () {
-                    if (kDebugMode) {
-                      print("First dicee clicked");
-                    }
+                    setState(() {
+                      leftDiceeNo = 5;
+                    });
                   },
-                  child: Image.asset('images/dice1.png'),
+                  child: Image.asset('images/dice$leftDiceeNo.png'),
                 ),
               ),
               Expanded(
