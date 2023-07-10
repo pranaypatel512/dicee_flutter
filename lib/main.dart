@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -47,19 +48,31 @@ class MyHomePage extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Dicee'),
         ),
-        body: Row(
-          children: [
-            Expanded(
-              child: Container(
-                child: Image(image: AssetImage('images/dice1.png')),
+        body: Center(
+          child: Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print("First dicee clicked");
+                    }
+                  },
+                  child: Image.asset('images/dice1.png'),
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                child: Image(image: AssetImage('images/dice2.png')),
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print("Second dicee clicked");
+                    }
+                  },
+                  child: Image.asset('images/dice2.png'),
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ));
   }
 }
